@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace跟接口绑定-->
+<mapper namespace="com.suiwei.dao.PersonMapper2">
+    <resultMap id="person" type="com.suiwei.entities.Person">
+        <result column="id" property="id"/>
+        <result column="name" property="name"/>
+        <!--<result column="age" property="age"/>-->
+    </resultMap>
+
+    <!--like语句为输入参数的话，注意sql注入，不能使用${}
+    oracle写法：like '%' || #{name} || '%'
+    mysql写法：concat('%', #{id}, '%')
+    -->
+    <select id="getPersonById" parameterType="int" resultMap="person">
+
+
+        select * from person
+    </select>
+
+
+</mapper>

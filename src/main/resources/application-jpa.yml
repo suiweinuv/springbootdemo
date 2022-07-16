@@ -1,0 +1,7 @@
+spring:
+  jpa:
+    hibernate:
+#更新或者创建数据表，如果实体类变化了，数据表也会变化
+      #ddl-auto: update
+#控制台显示sql
+    show-sql: true

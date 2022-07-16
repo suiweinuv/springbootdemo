@@ -1,0 +1,78 @@
+#这里面写的配置信息，所有环境的yml文件都用的到
+#内置tomcat的端口
+server:
+  port: 8080
+  #可选配置
+  #servlet:
+    #context-path: /demo
+spring:
+  rabbitmq:
+    host: 110.42.139.52
+    username: guest
+    password: guest
+
+  redis:
+    host: 110.42.139.52
+  profiles:
+    #激活配置文件
+    active: attribute,jpa
+  thymeleaf:
+    #禁用模板引擎缓存
+    cache: false
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    #url: jdbc:mysql://110.42.139.52:3306/demo
+    #username: root
+    #password: 123456
+    #driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:oracle:thin:@110.42.139.52:1521/ORCLWEB
+    username: sdnx
+    password: 123456
+    driver-class-name: oracle.jdbc.OracleDriver
+    # 配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
+    filters: stat, wall, slf4j
+    druid:
+    # 初始化大小，最小，最大
+    initialSize: 5
+    minIdle: 5
+    maxActive: 20
+    # 配置获取连接等待超时的时间
+    maxWait: 60000
+    # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+    timeBetweenEvictionRunsMillis: 60000
+    # 配置一个连接在池中最小生存的时间，单位是毫秒
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1 FROM DUAL
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    # 打开PSCache，并且指定每个连接上PSCache的大小
+    poolPreparedStatements: true
+    maxPoolPreparedStatementPerConnectionSize: 20
+    # 合并多个DruidDataSource的监控数据
+    useGlobalDataSourceStat: true
+    #aop-patterns: com.complain.*.service.*, com.complain.*.dao.*
+logging:
+  level:
+    #springboot默认级别，又叫root级别
+    root: info
+    #可以指定单个包是什么级别
+    com.suiwei.dao: debug
+    com.suiwei.mapper: debug
+
+
+  file:
+    #指定路径，文件名默认为spring.log
+    #path: C:\home\was\demo\
+    #指定路径跟文件名，如果没有路径默认为项目路径
+    name: C:\home\was\demo\springbootdemo\springbootdemo.log
+
+
+mybatis:
+  #实体类别名包路径
+  #type-aliases-package: com.sunyard.monitor.domain
+  #全局配置文件的位置
+  config-location: classpath:mybatis/mybatis-config.xml
+  #mapper文件的位置
+  mapper-locations: classpath:mybatis/mapper/*.xml
+

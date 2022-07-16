@@ -1,0 +1,18 @@
+#自定义的属性
+person:
+  age: 18
+  boss: true
+  birth: 2021/08/01
+  map: {k1: v1,k2: 2}
+  list:
+    - zhangsan
+    - lisi
+  dog:
+    name: 小狗
+    age: 2
+  name: suiwei2
+#配置文件占位符${}
+person2:
+  age: ${random.int} #随机数
+  name: ${person.name} #获取之前配置的值
+  hello: ${person.hello:abc} #获取之前配置的值，如果没有指定默认值
